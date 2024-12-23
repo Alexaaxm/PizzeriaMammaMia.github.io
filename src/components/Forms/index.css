@@ -1,0 +1,37 @@
+h1 {
+  color: black;
+}
+.container {
+  margin: 24px 150px;
+  border: 2px rgb(154, 62, 168) solid;
+  border-radius: 8px;
+}
+.formulario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 25px;
+}
+.formulario input {
+  padding: 8px;
+  width: 50%;
+  border-radius: 8px;
+  background-color: rgb(249, 223, 253);
+  color: black;
+}
+.formulario input:hover {
+  background-color: rgb(209, 187, 230);
+  cursor: pointer;
+}
+.formulario button {
+  margin: 18px;
+  background-color: rgb(154, 62, 168);
+  transition: 0.3s ease-in background-color;
+}
+.formulario button:hover {
+  background-color: rgb(113, 41, 124);
+  cursor: pointer;
+}

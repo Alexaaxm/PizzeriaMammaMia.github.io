@@ -28,7 +28,7 @@ const CardPizza = ({ name, price, ingredients, img }) => {
             ver más
           </button>
           <button href="#" className="card-link">
-            <i class="fa-solid fa-cart-arrow-down"></i> añadir
+            <i className="fa-solid fa-cart-arrow-down"></i> añadir
           </button>
         </div>
       </div>
