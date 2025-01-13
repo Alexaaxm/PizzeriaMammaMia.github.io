@@ -1,5 +1,4 @@
 const CardPizza = ({ name, price, ingredients, img }) => {
-  const ingredientsLine = ingredients.join(", ");
   const formatPrice = new Intl.NumberFormat("es-CL", {
     style: "currency",
     currency: "CLP",
@@ -17,11 +16,13 @@ const CardPizza = ({ name, price, ingredients, img }) => {
           <h5 className="card-title">{name}</h5>
         </div>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">
-            Ingredientes:
-            <br /> <p className="card-text">{ingredientsLine}</p>
-          </li>
-          <li className="list-group-item">Precio: {formatPrice}</li>
+          <h4>Ingredientes:</h4>
+          {ingredients.map((ingrediente) => (
+            <li> {ingrediente} </li>
+          ))}
+        </ul>
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item  ">Precio: {formatPrice}</li>
         </ul>
         <div className="card-body">
           <button href="#" className="card-link">

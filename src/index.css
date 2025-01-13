@@ -132,3 +132,15 @@ header p {
   color: rgb(244, 243, 243);
   padding: 12px;
 }
+li {
+  list-style: none;
+}
+.containerCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.buttonCard {
+  margin: 8px;
+}
