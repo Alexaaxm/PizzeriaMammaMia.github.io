@@ -144,3 +144,11 @@ li {
 .buttonCard {
   margin: 8px;
 }
+
+.productContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.imgProduct {
+  padding: 25px;
+}
