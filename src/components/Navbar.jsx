@@ -1,4 +1,5 @@
-import Header from "./Header";
+//import Header from "./Header";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const total = 25000;
@@ -6,7 +7,7 @@ const Navbar = () => {
   const formatearTotal = new Intl.NumberFormat("es").format(total);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-ligh">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           Pizzería Mamma Mía
@@ -28,9 +29,11 @@ const Navbar = () => {
         >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <button className="btn active" aria-current="page" href="#">
-                <i className="fa-solid fa-pizza-slice"></i> Home
-              </button>
+              <Link to="/">
+                <button className="btn active" aria-current="page" href="#">
+                  <i className="fa-solid fa-pizza-slice"></i> Home
+                </button>
+              </Link>
             </li>
             {token ? (
               <>
@@ -48,23 +51,29 @@ const Navbar = () => {
             ) : (
               <>
                 <li className="nav-item" key="login">
-                  <button className="btn active" href="#">
-                    <i className="fa-regular fa-address-card"></i> Login
-                  </button>
+                  <Link to="/login">
+                    <button className="btn active" href="#">
+                      <i className="fa-regular fa-address-card"></i> Login
+                    </button>
+                  </Link>
                 </li>
                 <li className="nav-item" key="register">
-                  <button className="btn active" href="#">
-                    <i className="fa-regular fa-address-card"></i> Register
-                  </button>
+                  <Link to="/register">
+                    <button className="btn active" href="#">
+                      <i className="fa-regular fa-address-card"></i> Register
+                    </button>
+                  </Link>
                 </li>
               </>
             )}
           </ul>
           <div className="d-flex">
-            <button className="btn btn-outline-success" type="">
-              <i className="fa-solid fa-cart-arrow-down"></i> total: $
-              {formatearTotal}
-            </button>
+            <Link to="/Cart">
+              <button className="btn active btnfos-5">
+                <i className="fa-solid fa-cart-arrow-down"></i> total: $
+                {formatearTotal}
+              </button>
+            </Link>
           </div>
         </div>
       </div>

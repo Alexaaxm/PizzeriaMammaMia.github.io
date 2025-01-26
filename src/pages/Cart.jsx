@@ -42,7 +42,7 @@ const Cart = () => {
       <h3>Detalle del pedido:</h3>
       <ul className="containerCard ">
         {cart.map((cartPizza) => (
-          <li className="col-sm-4  " key={cartPizza.id}>
+          <li className="col-sm-4 marginCard" key={cartPizza.id}>
             <img
               style={{ width: "50px", margin: "8px" }}
               src={cartPizza.img}

@@ -1,5 +1,5 @@
-import Header from "./Header";
-import CardPizza from "./CardPizza";
+import Header from "../components/Header";
+import CardPizza from "../components/CardPizza";
 //import { pizzas, pizzaCart } from "../assets/pizzas";
 import { useEffect, useState } from "react";
 
@@ -10,7 +10,6 @@ const Home = () => {
     const response = await fetch(url);
     const data = await response.json();
     setPizzas(data);
-    console.log(data);
   };
   useEffect(() => {
     getData();

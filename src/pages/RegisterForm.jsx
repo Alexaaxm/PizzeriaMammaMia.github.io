@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./index.css";
 
 const RegisterForm = () => {
   const [userData, setUserData] = useState(() => ({
@@ -44,7 +43,7 @@ const RegisterForm = () => {
   }
 
   return (
-    <div className="container">
+    <div className="containerForm">
       <h3>Registro</h3>
       <form className="formulario" onSubmit={validateForm}>
         <label htmlFor="register-email">Email</label>

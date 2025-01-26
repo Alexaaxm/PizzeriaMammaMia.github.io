@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./index.css";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   const [userData, setUserData] = useState(() => ({
@@ -36,7 +36,7 @@ const LoginForm = () => {
   }
 
   return (
-    <div className="container">
+    <div className="containerForm">
       <h3>Login</h3>
       <form className="formulario" onSubmit={validateForm}>
         <label htmlFor="login-email">Email</label>
@@ -53,7 +53,9 @@ const LoginForm = () => {
           name="password"
           id="login-password"
         />
-        <button type="submit">Ingresar</button>
+        <Link to="/profile">
+          <button type="submit">Ingresar</button>
+        </Link>
       </form>
     </div>
   );
