@@ -22,14 +22,7 @@ const Home = () => {
         <div className="row justify-content-around">
           {pizzas.map((pizza) => (
             <div className="col-sm-4">
-              <CardPizza
-                desc={pizza.desc}
-                id={pizza.id}
-                name={pizza.name}
-                ingredients={pizza.ingredients}
-                price={pizza.price}
-                img={pizza.img}
-              />
+              <CardPizza pizza={pizza} />
             </div>
           ))}
         </div>

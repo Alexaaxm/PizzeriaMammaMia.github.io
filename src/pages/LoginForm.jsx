@@ -54,7 +54,9 @@ const LoginForm = () => {
           id="login-password"
         />
         <Link to="/profile">
-          <button type="submit">Ingresar</button>
+          <button className="btnfos-5 buttonCard" type="submit">
+            Ingresar
+          </button>
         </Link>
       </form>
     </div>

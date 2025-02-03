@@ -67,7 +67,9 @@ const RegisterForm = () => {
           name="confirmPassword"
           id="register-confirmPassword"
         />
-        <button type="submit">Registrar</button>
+        <button className="btnfos-5 buttonCard" type="submit">
+          Registrar
+        </button>
       </form>
     </div>
   );

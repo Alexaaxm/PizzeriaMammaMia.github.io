@@ -1,10 +1,12 @@
-//import Header from "./Header";
 import { Link } from "react-router-dom";
+import { formatPrice } from "../utils/format";
+import { useCart } from "../providers/CartProvider";
 
 const Navbar = () => {
-  const total = 25000;
+  const { total } = useCart();
+  const totalCart = total;
+
   const token = false;
-  const formatearTotal = new Intl.NumberFormat("es").format(total);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-ligh">
@@ -70,8 +72,8 @@ const Navbar = () => {
           <div className="d-flex">
             <Link to="/Cart">
               <button className="btn active btnfos-5">
-                <i className="fa-solid fa-cart-arrow-down"></i> total: $
-                {formatearTotal}
+                <i className="fa-solid fa-cart-arrow-down"></i> total:
+                {formatPrice(totalCart)}
               </button>
             </Link>
           </div>

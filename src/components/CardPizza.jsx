@@ -1,37 +1,46 @@
 import { Link } from "react-router-dom";
-const CardPizza = ({ id, name, price, ingredients, img }) => {
-  const formatPrice = new Intl.NumberFormat("es-CL", {
-    style: "currency",
-    currency: "CLP",
-  }).format(price);
+import { formatPrice } from "../utils/format";
+import { useCart } from "../providers/CartProvider";
+
+const CardPizza = ({ pizza }) => {
+  const { addToCart } = useCart();
 
   return (
     <>
       <div className="card m-3" style={{ margin: "0 24px" }}>
         <img
-          src={img}
+          src={pizza.img}
           className="card-img-top"
           alt="Esta es una imagen de pizza"
         />
         <div className="card-body">
-          <h4 className="card-title">{name}</h4>
+          <h4 className="card-title">{pizza.name}</h4>
         </div>
         <ul className="list-group list-group-flush p-2">
           <h5>Ingredientes:</h5>
-          {ingredients.map((ingrediente) => (
+          {pizza.ingredients.map((ingrediente) => (
             <li> {ingrediente} </li>
           ))}
         </ul>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item  ">Precio: {formatPrice}</li>
+          <li className="list-group-item  ">
+            Precio: {formatPrice(pizza.price)}
+          </li>
         </ul>
         <div className="card-body color-prueba">
-          <Link to={`/pizza/${id}`}>
+          <Link to={`/pizza/${pizza.id}`}>
             <button href="#" className="card-link buttonCard btnfos-5 ">
               ver más
             </button>
           </Link>
-          <button href="#" className="card-link buttonCard btnfos-5 ">
+          <button
+            onClick={() => {
+              addToCart(pizza);
+              alert("Se ha añadido al carro!");
+            }}
+            href="#"
+            className="card-link buttonCard btnfos-5 "
+          >
             <i className="fa-solid fa-cart-arrow-down"></i> añadir
           </button>
         </div>
