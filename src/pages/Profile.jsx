@@ -4,7 +4,7 @@ const Profile = () => {
   return (
     <>
       <h5 className="headerImg textProfile">
-        Bienvenido correo.electronico@gmail.com <button>Cerrar sesión</button>
+        Bienvenido correo.electronico@gmail.com
       </h5>
     </>
   );

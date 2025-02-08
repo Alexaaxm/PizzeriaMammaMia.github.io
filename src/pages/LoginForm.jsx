@@ -1,11 +1,12 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { UserContext } from "../providers/UserProvider";
 
 const LoginForm = () => {
   const [userData, setUserData] = useState(() => ({
     email: "",
     password: "",
   }));
+  const { login } = useContext(UserContext);
 
   const validate = () => {
     const { email, password } = userData;
@@ -18,13 +19,15 @@ const LoginForm = () => {
       alert("Tu contraseña debe tener al menos 6 carácteres");
       return;
     }
-
+    login();
     alert("Login correcto");
   };
+
   function validateForm(event) {
     event.preventDefault();
     validate();
   }
+
   function actualizarDatos(e) {
     setUserData((prevData) => {
       const newData = {
@@ -53,11 +56,9 @@ const LoginForm = () => {
           name="password"
           id="login-password"
         />
-        <Link to="/profile">
-          <button className="btnfos-5 buttonCard" type="submit">
-            Ingresar
-          </button>
-        </Link>
+        <button className="btnfos-5 buttonCard" type="submit">
+          Ingresar
+        </button>
       </form>
     </div>
   );

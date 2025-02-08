@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../providers/UserProvider";
 
 const RegisterForm = () => {
+  const { login } = useContext(UserContext);
+
   const [userData, setUserData] = useState(() => ({
     email: "",
     password: "",
@@ -26,6 +29,7 @@ const RegisterForm = () => {
       alert("Las contraseñas no coinciden, intente nuevamente");
       return;
     }
+    login();
     alert("Registro correcto");
   };
   function validateForm(event) {

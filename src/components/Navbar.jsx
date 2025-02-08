@@ -1,12 +1,15 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
 import { formatPrice } from "../utils/format";
 import { useCart } from "../providers/CartProvider";
+import { NavLink } from "react-router-dom";
+import { UserContext } from "../providers/UserProvider";
 
 const Navbar = () => {
+  const setActiveClass = ({ isActive }) => (isActive ? "active" : undefined);
+
+  const { token, logout } = useContext(UserContext);
   const { total } = useCart();
   const totalCart = total;
-
-  const token = false;
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-ligh">
@@ -31,51 +34,53 @@ const Navbar = () => {
         >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link to="/">
+              <NavLink className={setActiveClass} to="/">
                 <button className="btn active" aria-current="page" href="#">
                   <i className="fa-solid fa-pizza-slice"></i> Home
                 </button>
-              </Link>
+              </NavLink>
             </li>
-            {token ? (
+            {!token ? (
               <>
-                <li className="nav-item" key="profile">
-                  <button className="btn active" href="#">
-                    <i className="fa-regular fa-user"></i> Profile
-                  </button>
+                <li className="nav-item" key="login">
+                  <NavLink className={setActiveClass} to="/login">
+                    <button className="btn active" href="#">
+                      <i className="fa-regular fa-address-card"></i> Login
+                    </button>
+                  </NavLink>
                 </li>
-                <li className="nav-item" key="logout">
-                  <button className="btn active" href="#">
-                    <i className="fa-solid fa-right-from-bracket"></i> Logout
-                  </button>
+                <li className="nav-item" key="register">
+                  <NavLink className={setActiveClass} to="/register">
+                    <button className="btn active" href="#">
+                      <i className="fa-regular fa-address-card"></i> Register
+                    </button>
+                  </NavLink>
                 </li>
               </>
             ) : (
               <>
-                <li className="nav-item" key="login">
-                  <Link to="/login">
-                    <button className="btn active" href="#">
-                      <i className="fa-regular fa-address-card"></i> Login
+                <li className="nav-item" key="profile">
+                  <NavLink className={setActiveClass} to="/profile">
+                    <button className="btn active">
+                      <i className="fa-regular fa-user"></i> Profile
                     </button>
-                  </Link>
+                  </NavLink>
                 </li>
-                <li className="nav-item" key="register">
-                  <Link to="/register">
-                    <button className="btn active" href="#">
-                      <i className="fa-regular fa-address-card"></i> Register
-                    </button>
-                  </Link>
+                <li className="nav-item" key="logout">
+                  <button className="btn active" onClick={(e) => logout()}>
+                    <i className="fa-solid fa-right-from-bracket"></i> Logout
+                  </button>
                 </li>
               </>
             )}
           </ul>
           <div className="d-flex">
-            <Link to="/Cart">
+            <NavLink className={setActiveClass} to="/Cart">
               <button className="btn active btnfos-5">
                 <i className="fa-solid fa-cart-arrow-down"></i> total:
                 {formatPrice(totalCart)}
               </button>
-            </Link>
+            </NavLink>
           </div>
         </div>
       </div>

@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { useCart } from "../providers/CartProvider";
 import { formatPrice } from "../utils/format";
+import { UserContext } from "../providers/UserProvider";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
+  const { token } = useContext(UserContext);
   const {
     total,
     cart,
@@ -51,10 +55,21 @@ const Cart = () => {
           ))}
         </ul>
         <h3>Total: {formatPrice(total)}</h3>
-        <button className="btn-checkout item-quantity ">Pagar</button>
-        <button className="btn-remove item-quantity " onClick={cleanCart}>
-          Vaciar carro
-        </button>
+        {cart.length > 0 ? (
+          <button disabled={!token} className="btn-checkout item-quantity ">
+            Pagar
+          </button>
+        ) : (
+          <Link to="/">
+            <button>Añadir productos</button>
+          </Link>
+        )}
+
+        {cart.length > 0 ? (
+          <button className="btn-remove item-quantity " onClick={cleanCart}>
+            Vaciar carro
+          </button>
+        ) : null}
       </div>
     </div>
   );
