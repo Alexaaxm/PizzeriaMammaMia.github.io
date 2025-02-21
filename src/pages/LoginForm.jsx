@@ -19,8 +19,7 @@ const LoginForm = () => {
       alert("Tu contraseña debe tener al menos 6 carácteres");
       return;
     }
-    login();
-    alert("Login correcto");
+    login(email, password);
   };
 
   function validateForm(event) {

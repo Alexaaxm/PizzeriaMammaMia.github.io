@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../providers/UserProvider";
 
 const RegisterForm = () => {
-  const { login } = useContext(UserContext);
+  const { register } = useContext(UserContext);
 
   const [userData, setUserData] = useState(() => ({
     email: "",
@@ -29,8 +29,7 @@ const RegisterForm = () => {
       alert("Las contraseñas no coinciden, intente nuevamente");
       return;
     }
-    login();
-    alert("Registro correcto");
+    register(email, password);
   };
   function validateForm(event) {
     event.preventDefault();

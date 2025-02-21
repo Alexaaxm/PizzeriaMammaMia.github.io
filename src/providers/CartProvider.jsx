@@ -80,6 +80,31 @@ const CartProvider = ({ children }) => {
     setTotal(getTotal(cart));
   }, [cart]);
 
+  const checkout = async () => {
+    let data;
+
+    try {
+      const response = await fetch("http://localhost:5000/api/checkouts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          cart,
+        }),
+      });
+      data = await response.json();
+      if (data.error) {
+        return false;
+      } else {
+        return true;
+      }
+    } catch (e) {
+      return false;
+    }
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -91,6 +116,7 @@ const CartProvider = ({ children }) => {
         cleanCart,
         total,
         totalItemsInCart,
+        checkout,
       }}
     >
       {children}
